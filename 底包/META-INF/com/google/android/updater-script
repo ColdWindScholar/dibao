@@ -1,0 +1,7 @@
+ui_print("****************************************");
+ui_print("***红米8/8a 64位底包By rm -rf /* ***");
+ui_print("***作者QQ：3586563103 ***");
+ui_print("****************************************");
+package_extract_file("boot.img", "/dev/block/bootdevice/by-name/boot");
+package_extract_file("vendor.img", "/dev/block/bootdevice/by-name/vendor");
+
