@@ -1,6 +1,6 @@
 ui_print("****************************************");
-ui_print("***红米8/8a 直刷包By rm -rf /* ***");
-ui_print("***制作工具:红米8和8a底包直刷包制作工具 ***");
+ui_print("***直刷包By rm -rf /* ***");
+ui_print("***制作工具：底包直刷包制作工具 ***");
 ui_print("***作者QQ：3586563103 ***");
 ui_print("****************************************");
 block_image_update("/dev/block/bootdevice/by-name/system", package_extract_file("system.transfer.list"), "system.new.dat.br", "system.patch.dat") ||
