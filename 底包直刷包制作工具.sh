@@ -2720,6 +2720,11 @@ fi
   git clone https://github.com/yi985432/python
   cp ~/python/底包直刷包制作工具.sh $bf
   echo "\033[32m脚本已复制到当前目录。\033[0m"
+   read -p "按任意键返回" make
+   cd $af
+   clear
+   sh $0  
+   exit
   fi
   if [ $gengxin = 'n' ];then
   echo "\033[32m懒得更新了。\033[0m"
