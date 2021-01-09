@@ -2718,6 +2718,29 @@ fi
   if [ $gengxin = 'y' ];then
   rm -rf ~/python
   git clone https://github.com/yi985432/python
+  if [ $? !=  '0' ];then
+  echo "\033[31m更新失败！
+1.可能是网络不稳定
+2.可能是源问题，换国内的试试
+3.可能是其他问题"
+  rm -rf ~/python
+   read -p "按任意键返回" make
+   cd $af
+   clear
+   sh $0  
+   exit
+  fi
+  echo "\033[32m更新完毕！\033[0m"
+  read -p "是否替换旧脚本?(y/n): " tihuan
+  if [ -z $tihuan ];then
+  echo "\033[32m不替换\033[0m"
+   read -p "按任意键返回" make
+   cd $af
+   clear
+   sh $0  
+   exit
+   fi  
+  if [ $tihuan = 'y' ];then
   cp ~/python/底包直刷包制作工具.sh $bf
   echo "\033[32m脚本已复制到当前目录。\033[0m"
    read -p "按任意键返回" make
@@ -2725,6 +2748,15 @@ fi
    clear
    sh $0  
    exit
+   fi
+  if [ $tihuan = 'n' ];then
+  echo "\033[32m不替换\033[0m"
+   read -p "按任意键返回" make
+   cd $af
+   clear
+   sh $0  
+   exit
+   fi
   fi
   if [ $gengxin = 'n' ];then
   echo "\033[32m懒得更新了。\033[0m"
