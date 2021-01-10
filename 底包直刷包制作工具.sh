@@ -39,12 +39,12 @@ if [ $os = 'Android' ];then
 2.可能是源问题，换一个源再重试。
 3.可能没有挂t。"
   install="apt install git python brotli e2fsprogs zip -y"
-  github="git clone https://github.com/yi985432/python"
+  github="git clone https://gitee.com/yi985432/python.git"
   cd ~
 if [ ! -d ~/python ];then
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -142,7 +142,7 @@ if [ $qz = '1' ];then
   if [ ! -d ~/python ];then  
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -299,7 +299,7 @@ if [ $qz = '1' ];then
   if [ ! -d ~/python ];then
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -428,7 +428,7 @@ if [ $ba = '3' ];then
   if [ ! -d ~/python ];then
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -602,7 +602,7 @@ if [ $qz = '2' ];then
   if [ ! -d ~/python ];then  
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -759,7 +759,7 @@ if [ $qz = '2' ];then
   if [ ! -d ~/python ];then
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -888,7 +888,7 @@ if [ $ba = '3' ];then
   if [ ! -d ~/python ];then
   echo "正在初始化……"
   
-  read -p "初始化需要挂t，是否继续？(y/n): " Initialization
+  read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
   $install
   $github
@@ -1085,7 +1085,7 @@ fi
    if [ ! -f ~/python/imgextractor.py ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -1168,7 +1168,7 @@ fi
    if [ ! -f ~/python/imgextractor.py ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -1246,10 +1246,11 @@ fi
    fi
 #1   
    if [ $dabao = '1' ];then
+   if [ $os = 'Android' ];then   
    if [ ! -f ~/python/e2fsdroid ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -1266,12 +1267,45 @@ fi
    sh $0   
    exit
    fi
- fi     
+  fi     
+ fi
+   if [ $os = 'GNU/Linux' ];then
+   if [ ! -f ~/python/e2fsdroid~ ];then
+   rm -rf ~/python
+   echo "正在初始化……"  
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
+   if [ -z $c ];then
+  $install
+  $github
+   fi   
+   if [ $c = 'y' ];then
+  $install
+  $github
+   fi
+   if [ $c = "n" ];then
+   echo "\033[31m已取消\033[0m" 
+   read -p "按任意键返回" make
+   cd $af
+   clear
+   sh $0   
+   exit
+   fi
+  fi     
+ fi 
+   if [ $os = 'Android' ];then
    if [ ! -f ~/python/e2fsdroid ];then
   echo "\033[31m$error\033[0m"
    rm -rf ~/python
    exit
    fi  
+  fi
+   if [ $os = 'GNU/Linux' ];then
+   if [ ! -f ~/python/e2fsdroid~ ];then
+  echo "\033[31m$error\033[0m"
+   rm -rf ~/python
+   exit
+   fi  
+  fi      
    if [ $os = 'Android' ];then
    ssize=$(cat /data/底包直刷包制作工具/system/config/system_size.txt)
    fi
@@ -1289,8 +1323,8 @@ fi
    fi
    if [ $os = 'GNU/Linux' ];then
    echo "\033[32m正在打包system.img……\033[0m"   
-   su -c ~/python/mke2fs -L / -t ext4 -b 4096 $bf/工作目录/IMG/system_new.img ${size}M   
-   su -c ~/python/e2fsdroid -e -T 0 -S /root/底包直刷包制作工具/system/config/system_file_contexts -C /root/底包直刷包制作工具/system/config/system_fs_config  -a /system -f /root/底包直刷包制作工具/system/system $bf/工作目录/IMG/system_new.img
+   ~/python/mke2fs~ -L / -t ext4 -b 4096 $bf/工作目录/IMG/system_new.img ${size}M   
+   ~/python/e2fsdroid~ -e -T 0 -S /root/底包直刷包制作工具/system/config/system_file_contexts -C /root/底包直刷包制作工具/system/config/system_fs_config  -a /system -f /root/底包直刷包制作工具/system/system $bf/工作目录/IMG/system_new.img
    fi      
    fi         
    if [ $mkesys = 'y' ];then  
@@ -1301,8 +1335,8 @@ fi
    fi
    if [ $os = 'GNU/Linux' ];then
    echo "\033[32m正在打包system.img……\033[0m"   
-   su -c ~/python/mke2fs -L / -t ext4 -b 4096 $bf/工作目录/IMG/system_new.img ${size}M   
-   su -c ~/python/e2fsdroid -e -T 0 -S /root/底包直刷包制作工具/system/config/system_file_contexts -C /root/底包直刷包制作工具/system/config/system_fs_config  -a /system -f /root/底包直刷包制作工具/system/system $bf/工作目录/IMG/system_new.img
+   ~/python/mke2fs~ -L / -t ext4 -b 4096 $bf/工作目录/IMG/system_new.img ${size}M   
+   ~/python/e2fsdroid~ -e -T 0 -S /root/底包直刷包制作工具/system/config/system_file_contexts -C /root/底包直刷包制作工具/system/config/system_fs_config  -a /system -f /root/底包直刷包制作工具/system/system $bf/工作目录/IMG/system_new.img
    fi      
    fi
    if [ $mkesys = 'n' ];then
@@ -1330,10 +1364,11 @@ fi
    fi
 #2
    if [ $dabao = '2' ];then
+   if [ $os = 'Android' ];then   
    if [ ! -f ~/python/e2fsdroid ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -1350,12 +1385,45 @@ fi
    sh $0   
    exit
    fi
- fi     
+  fi     
+ fi
+   if [ $os = 'GNU/Linux' ];then
+   if [ ! -f ~/python/e2fsdroid~ ];then
+   rm -rf ~/python
+   echo "正在初始化……"  
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
+   if [ -z $c ];then
+  $install
+  $github
+   fi   
+   if [ $c = 'y' ];then
+  $install
+  $github
+   fi
+   if [ $c = "n" ];then
+   echo "\033[31m已取消\033[0m" 
+   read -p "按任意键返回" make
+   cd $af
+   clear
+   sh $0   
+   exit
+   fi
+  fi     
+ fi 
+   if [ $os = 'Android' ];then
    if [ ! -f ~/python/e2fsdroid ];then
   echo "\033[31m$error\033[0m"
    rm -rf ~/python
    exit
    fi  
+  fi
+   if [ $os = 'GNU/Linux' ];then
+   if [ ! -f ~/python/e2fsdroid~ ];then
+  echo "\033[31m$error\033[0m"
+   rm -rf ~/python
+   exit
+   fi  
+  fi      
    if [ $os = 'Android' ];then
    ssize=$(cat /data/底包直刷包制作工具/vendor/config/vendor_size.txt)
    fi
@@ -1373,8 +1441,8 @@ fi
    fi
    if [ $os = 'GNU/Linux' ];then
    echo "\033[32m正在打包vendor.img……\033[0m"   
-   su -c ~/python/mke2fs -L / -t ext4 -b 4096 $bf/工作目录/IMG/vendor_new.img ${size}M   
-   su -c ~/python/e2fsdroid -e -T 0 -S /root/底包直刷包制作工具/vendor/config/vendor_file_contexts -C /root/底包直刷包制作工具/vendor/config/vendor_fs_config  -a /vendor -f /root/底包直刷包制作工具/vendor/vendor $bf/工作目录/IMG/vendor_new.img
+   ~/python/mke2fs~ -L / -t ext4 -b 4096 $bf/工作目录/IMG/vendor_new.img ${size}M   
+   ~/python/e2fsdroid~ -e -T 0 -S /root/底包直刷包制作工具/vendor/config/vendor_file_contexts -C /root/底包直刷包制作工具/vendor/config/vendor_fs_config  -a /vendor -f /root/底包直刷包制作工具/vendor/vendor $bf/工作目录/IMG/vendor_new.img
    fi      
    fi         
    if [ $mkesys = 'y' ];then  
@@ -1385,8 +1453,8 @@ fi
    fi
    if [ $os = 'GNU/Linux' ];then
    echo "\033[32m正在打包vendor.img……\033[0m"   
-   su -c ~/python/mke2fs -L / -t ext4 -b 4096 $bf/工作目录/IMG/vendor_new.img ${size}M   
-   su -c ~/python/e2fsdroid -e -T 0 -S /root/底包直刷包制作工具/vendor/config/vendor_file_contexts -C /root/底包直刷包制作工具/vendor/config/vendor_fs_config  -a /vendor -f /root/底包直刷包制作工具/vendor/vendor $bf/工作目录/IMG/vendor_new.img
+   ~/python/mke2fs~ -L / -t ext4 -b 4096 $bf/工作目录/IMG/vendor_new.img ${size}M   
+   ~/python/e2fsdroid~ -e -T 0 -S /root/底包直刷包制作工具/vendor/config/vendor_file_contexts -C /root/底包直刷包制作工具/vendor/config/vendor_fs_config  -a /vendor -f /root/底包直刷包制作工具/vendor/vendor $bf/工作目录/IMG/vendor_new.img
    fi      
    fi
    if [ $mkesys = 'n' ];then
@@ -1411,7 +1479,7 @@ fi
    clear
    sh $0  
    exit
-   fi   
+   fi
 #3
    if [ $dabao = '3' ];then
    cd $af
@@ -1495,7 +1563,7 @@ if [ $sys = '2' ];then
    if [ ! -f ~/python/sdat2img.py ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " a
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " a
    if [ -z $a ];then
   $install
   $github
@@ -1577,7 +1645,7 @@ if [ $sys = '2' ];then
    if [ ! -f ~/python/rimg2sdat.py ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -1715,7 +1783,7 @@ if [ $sys = '5' ];then
    if [ ! -f ~/python/img2simg ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -1786,7 +1854,7 @@ if [ $sys = '6' ];then
    if [ ! -f ~/python/simg2img ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " e
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " e
    if [ -z $e ];then
   $install
   $github
@@ -1936,7 +2004,7 @@ if [ $ven = '2' ];then
    if [ ! -f ~/python/sdat2img.py ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " b
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " b
   if [ -z $b ];then
   $install
   $github
@@ -2020,7 +2088,7 @@ if [ $ven = '2' ];then
    if [ ! -f ~/python/rimg2sdat.py ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " c
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " c
    if [ -z $c ];then
   $install
   $github
@@ -2160,7 +2228,7 @@ if [ $ven = '5' ];then
    if [ ! -f ~/python/img2simg ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " d
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " d
   if [ -z $d ];then
   $install
   $github
@@ -2232,7 +2300,7 @@ if [ $ven = '6' ];then
    if [ ! -f ~/python/simg2img ];then
    rm -rf ~/python
    echo "正在初始化……"  
-   read -p "初始化需要挂t，是否继续？(y/n): " f
+   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " f
   if [ -z $f ];then
   $install
   $github
@@ -2692,7 +2760,7 @@ fi
 #检测版本更新
   if [ $xz = '8' ];then
   echo "\033[32m正在获取最新版本……\033[0m"
-  git clone --depth=1 https://github.com/yi985432/python update -b update > /dev/null 2>&1
+  git clone --depth=1 https://gitee.com/yi985432/python.git update -b update > /dev/null 2>&1
   banben=$(cat ~/update/update.txt)
   dangqian=V3.5
   echo "\033[33m当前版本:$dangqian\033[0m"
@@ -2706,7 +2774,7 @@ fi
    sh $0  
    exit  
   else
-  read -p "最新版本$banben是否更新？(要挂t)(y/n): " gengxin
+  read -p "最新版本$banben是否更新？(y/n): " gengxin
   if [ -z $gengxin ];then
   echo "\033[32m懒得更新了。\033[0m"
    read -p "按任意键返回" make
@@ -2717,7 +2785,7 @@ fi
   fi  
   if [ $gengxin = 'y' ];then
   rm -rf ~/python
-  git clone https://github.com/yi985432/python
+  git clone https://gitee.com/yi985432/python.git
   if [ $? !=  '0' ];then
   echo "\033[31m更新失败！
 1.可能是网络不稳定
