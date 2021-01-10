@@ -128,7 +128,7 @@ if [ ! -d ~/python/直刷包 ];then
 if [ $xz = '1' ];then
   echo "1.红米8/8a制作底包&直刷包
 2.红米7/7a制作底包&直刷包
-3.返回"
+3.回到主界面"
   read -p "请选择: " qz  
   if [ -z $qz ];then
   exit
@@ -138,7 +138,7 @@ if [ $qz = '1' ];then
   echo "1.制作整合直刷包
 2.制作底包
 3.制作直刷包
-4.返回"
+4.回到主界面"
   read -p "请选择: " ba
   if [ -z $ba ];then
   exit
@@ -598,7 +598,7 @@ if [ $qz = '2' ];then
   echo "1.制作整合直刷包
 2.制作底包
 3.制作直刷包
-4.返回"
+4.回到主界面"
   read -p "请选择: " ba
   if [ -z $ba ];then
   exit
@@ -1065,7 +1065,7 @@ fi
   if [ $xz = '2' ];then
    echo "1.解包system.img
 2.解包vendor.img
-3.返回" 
+3.回到主界面" 
    read -p "请选择: " jb
    if [ -z $jb ];then
    exit
@@ -1248,7 +1248,7 @@ fi
   if [ $xz = '3' ];then
   echo "1.打包system
 2.打包vendor
-3.返回"
+3.回到主界面"
    read -p "请选择: " dabao
    if [ -z $dabao ];then
    exit
@@ -1517,7 +1517,7 @@ if [ $xz = '4' ];then
 4.dat转br
 5.raw转sparse
 6.sparse转raw
-7.返回"
+7.回到主界面"
    read -p "请选择: " sys
   if [ -z $sys ];then
   exit
@@ -1958,7 +1958,7 @@ if [ $xz = '5' ];then
 4.dat转br
 5.raw转sparse
 6.sparse转raw
-7.返回"
+7.回到主界面"
    read -p "请选择: " ven
    if [ -z $ven ];then
    exit
@@ -2403,7 +2403,7 @@ if [ $xz = '6' ];then
 2.修改vendor(要root)
 3.调整system.img的大小
 4.调整vendor.img的大小
-5.返回"
+5.回到主界面"
    read -p "请选择: " ab
   if [ -z $ab ];then
   exit
