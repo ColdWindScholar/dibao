@@ -1767,11 +1767,11 @@ if [ $sys = '2' ];then
    sh $0   
    exit
    fi
+   mv $bf/工作目录/DAT/system.transfer.list  $bf/工作目录/Br
    echo "\033[32mbr转换完成！\033[0m"
    read -p "转换完成，是否删除旧文件？(y/n) " cc
    if [ -z $cc ];then 
    rm -rf $bf/工作目录/DAT/system.new.dat
-   rm -rf $bf/工作目录/DAT/system.transfer.list   
    read -p "已删除，按任意键返回" make
    cd $af
    clear
@@ -1780,7 +1780,6 @@ if [ $sys = '2' ];then
    fi    
    if [ $cc = 'y' ];then
    rm -rf $bf/工作目录/DAT/system.new.dat
-   rm -rf $bf/工作目录/DAT/system.transfer.list      
    read -p "按任意键返回" make
    cd $af
    clear
@@ -2212,11 +2211,11 @@ if [ $ven = '2' ];then
    sh $0   
    exit
    fi
+   mv $bf/工作目录/DAT/vendor.transfer.list   $bf/工作目录/Br
    echo "\033[32mbr转换完成！\033[0m"
    read -p "转换完成，是否删除旧文件？(y/n) " cc
    if [ -z $cc ];then 
    rm -rf $bf/工作目录/DAT/vendor.new.dat
-   rm -rf $bf/工作目录/DAT/vendor.transfer.list   
    read -p "已删除，按任意键返回" make
    cd $af
    clear
@@ -2225,7 +2224,6 @@ if [ $ven = '2' ];then
    fi    
    if [ $cc = 'y' ];then
    rm -rf $bf/工作目录/DAT/vendor.new.dat
-   rm -rf $bf/工作目录/DAT/vendor.transfer.list      
    read -p "按任意键返回" make
    cd $af
    clear
