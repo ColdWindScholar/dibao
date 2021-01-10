@@ -38,7 +38,7 @@ if [ $os = 'Android' ];then
 1.可能是网络问题。
 2.可能是源问题，换一个源再重试。
 3.可能没有挂t。"
-  install="apt install git python brotli e2fsprogs zip -y"
+  install="apt install git python python3 brotli e2fsprogs zip -y"
   github="git clone https://gitee.com/yi985432/python.git"
   cd ~
 if [ ! -d ~/python ];then
@@ -1119,10 +1119,10 @@ fi
    exit
    fi
    if [ $os = 'Android' ];then   
-   su -c  ~/../usr/bin/python ~/python/imgextractor.py  $bf/工作目录/IMG/system.img  /data/底包直刷包制作工具/system
+   su -c  ~/../usr/bin/python3 ~/python/imgextractor.py  $bf/工作目录/IMG/system.img  /data/底包直刷包制作工具/system
    fi
    if [ $os = 'GNU/Linux' ];then
-   python ~/python/imgextractor.py  $bf/工作目录/IMG/system.img  /root/底包直刷包制作工具/system
+   python3 ~/python/imgextractor.py  $bf/工作目录/IMG/system.img  /root/底包直刷包制作工具/system
    fi  
    if [ $? = '1' ];then
    echo "\033[31m解包失败！\033[0m"
@@ -1202,10 +1202,10 @@ fi
    exit
    fi
    if [ $os = 'Android' ];then   
-   su -c  ~/../usr/bin/python ~/python/imgextractor.py  $bf/工作目录/IMG/vendor.img  /data/底包直刷包制作工具/vendor
+   su -c  ~/../usr/bin/python3 ~/python/imgextractor.py  $bf/工作目录/IMG/vendor.img  /data/底包直刷包制作工具/vendor
    fi
    if [ $os = 'GNU/Linux' ];then
-   python ~/python/imgextractor.py  $bf/工作目录/IMG/vendor.img  /root/底包直刷包制作工具/vendor
+   python3 ~/python/imgextractor.py  $bf/工作目录/IMG/vendor.img  /root/底包直刷包制作工具/vendor
    fi  
    if [ $? = '1' ];then
    echo "\033[31m解包失败！\033[0m"
