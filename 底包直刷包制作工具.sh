@@ -96,7 +96,7 @@ if [ ! -d ~/python/直刷包 ];then
   mkdir $bf/工作目录/已完成/直刷包
   mkdir $bf/工作目录/已完成/整合直刷包
   fi  
-  chmod -R 0755 ~/python/*      
+  chmod -Rf 0755 ~/python/*      
   echo "\033[32m
 ****************************************************
 ***欢迎使用底包&直刷包制作工具v3.5****
@@ -1302,6 +1302,9 @@ fi
   fi     
  fi 
    if [ $os = 'Android' ];then
+   if [ ! -d /data/底包直刷包制作工具/system/system ];then
+   echo "\033[33m注意！/data/底包直刷包制作工具的system文件夹为空！\033[0m"
+   fi   
    if [ ! -f ~/python/e2fsdroid ];then
   echo "\033[31m$error\033[0m"
    rm -rf ~/python
@@ -1309,6 +1312,9 @@ fi
    fi  
   fi
    if [ $os = 'GNU/Linux' ];then
+   if [ ! -d /root/底包直刷包制作工具/system/system ];then
+   echo "\033[33m注意！/root/底包直刷包制作工具的system文件夹为空！\033[0m"
+   fi   
    if [ ! -f ~/python/e2fsdroid~ ];then
   echo "\033[31m$error\033[0m"
    rm -rf ~/python
@@ -1420,6 +1426,9 @@ fi
   fi     
  fi 
    if [ $os = 'Android' ];then
+   if [ ! -d /data/底包直刷包制作工具/vendor/vendor ];then
+   echo "\033[33m注意！/data/底包直刷包制作工具的vendor文件夹为空！\033[0m"
+   fi   
    if [ ! -f ~/python/e2fsdroid ];then
   echo "\033[31m$error\033[0m"
    rm -rf ~/python
@@ -1427,6 +1436,9 @@ fi
    fi  
   fi
    if [ $os = 'GNU/Linux' ];then
+   if [ ! -d /root/底包直刷包制作工具/vendor/vendor ];then
+   echo "\033[33m注意！/root/底包直刷包制作工具的vendor文件夹为空！\033[0m"
+   fi   
    if [ ! -f ~/python/e2fsdroid~ ];then
   echo "\033[31m$error\033[0m"
    rm -rf ~/python
