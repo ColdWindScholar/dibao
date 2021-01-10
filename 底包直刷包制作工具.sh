@@ -38,7 +38,12 @@ if [ $os = 'Android' ];then
 1.可能是网络问题。
 2.可能是源问题，换一个源再重试。
 3.可能没有挂t。"
+  if [ $os = 'Android' ];then
+  install="apt install git python brotli e2fsprogs zip -y"
+  fi
+  if [ $os = 'GNU/Linux' ];then
   install="apt install git python python3 brotli e2fsprogs zip -y"
+  fi  
   github="git clone https://gitee.com/yi985432/python.git"
   cd ~
 if [ ! -d ~/python ];then
@@ -46,10 +51,14 @@ if [ ! -d ~/python ];then
   
   read -p "正在初始化(不需要挂t)，是否继续？(y/n): " Initialization
   if [ -z $Initialization ];then
+  apt update
+  apt upgrade
   $install
   $github
   fi   
   if [ $Initialization = 'y' ];then
+  apt update
+  apt upgrade
   $install 
   $github
   fi
