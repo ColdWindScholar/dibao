@@ -31,7 +31,7 @@ if [ $os = 'Android' ];then
   exit
   fi
   echo "\033[32m运行环境:Android\033[0m"  
-  su -c chmod -R 0777 ~/python
+  chmod -Rf 0777 ~/python
   fi
   if [ $os = 'GNU/Linux' ];then
   if [ $root -ne '0' ];then
@@ -39,7 +39,7 @@ if [ $os = 'Android' ];then
   exit
   fi
   echo "\033[32m运行环境:linux\033[0m"
-  chmod -R 0777 ~/python
+  chmod -Rf 0777 ~/python
   fi
   error="初始化失败！请重试。
 1.可能是网络问题。
