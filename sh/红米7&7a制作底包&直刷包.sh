@@ -224,7 +224,7 @@ if [ ! -d ~/python/直刷包 ];then
    sh $0
    exit
    fi
-   read -p "是否调整vendor.img的大小?(y/n): "tzvendor
+   read -p "是否调整vendor.img的大小?(y/n): " tzvendor
    if [ -z $tzvendor ];then
    .
    fi
