@@ -84,7 +84,11 @@
    ssize=$(cat /root/底包直刷包制作工具/system/config/system_size.txt)
    fi   
    size=$(expr $ssize / 1024 / 1024 )
-   sb=$(echo "${size}M")
+   read -p "自定义打包大小(直接按回车使用默认配置文件打包){不用带单位,默认单位:M}: " zdydbdx   
+   if [ $zdydbdx ];then
+   size=$zdydbdx
+   fi
+   sb=$(echo "${size}M")   
    read -p "是否打包system.img?[$sb](y/n): " mkesys
    if [ -z $mkesys ];then
    if [ $os = 'Android' ];then   
@@ -208,6 +212,10 @@
    ssize=$(cat /root/底包直刷包制作工具/vendor/config/vendor_size.txt)
    fi   
    size=$(expr $ssize / 1024 / 1024 )
+   read -p "自定义打包大小(直接按回车使用默认配置文件打包){不用带单位,默认单位:M}: " zdydbdx   
+   if [ $zdydbdx ];then
+   size=$zdydbdx
+   fi   
    sb=$(echo "${size}M")
    read -p "是否打包vendor.img?[$sb](y/n): " mkesys
    if [ -z $mkesys ];then
