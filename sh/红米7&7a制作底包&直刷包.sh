@@ -46,7 +46,7 @@
   cp -r ~/python/整合直刷包/* $bf/工作目录/未完成/整合直刷包
   fi  
   echo "\033[32m初始化已完成！\033[0m"
-  ii=$(echo "\033[32mraw格式已修改好的\033[0m")
+  ii=$(echo "\033[33mraw格式已修改好的\033[0m")
   read -p "请将${ii}boot.img、vendor.img、system.img放到工作目录/未完成/整合直刷包里,按任意键继续" make
   echo "\033[32m正在制作整合直刷包……\033[0m"   
    if [ ! -f $bf/工作目录/未完成/整合直刷包/vendor.img ];then
