@@ -5,8 +5,7 @@
 #工具最新版本及开源：https://github.com/yi985432/dibao-zhishuabao-tool
   export os root af bf error install github mian
   mian=$0         
-  xdangqian=V4.1
-  dangqian=5   
+  dangqian=V4.0  
   os=$(uname -o)
   root=$(id -u)
   af=$(pwd)
@@ -106,7 +105,10 @@ if [ ! -d ~/python/直刷包 ];then
   fi  
   echo "\033[32m
 ****************************************************
-***Welcome to use Super-pack-tool v4.1****
+***欢迎使用底包&直刷包制作工具v4.0****
+***作者:rm-rf/****
+***作者QQ:3586563103****
+***目前制作底包和直刷包已支持红米8/A&7/A****
 ***Android注意！本工具依赖于Termux****
 ***linux可运行在ubuntu、debian等支持apt的系统****
 *****************************************************\033[0m"
@@ -116,12 +118,10 @@ if [ ! -d ~/python/直刷包 ];then
          3.打包img(root)
          4.转换system
          5.转换vendor
-         6.转换product
-         7.杂项        
-         8.清理工作目录
-         9.检测版本更新
+         6.杂项        
+         7.清理工作目录
+         8.检测版本更新
          88.退出
-         00.维护人员列表
          "
   read -p "请选择: " xz
   if [ -z $xz ];then
@@ -175,17 +175,8 @@ exit
 fi
 sh ~/python/sh/转换vendor.sh   
 fi
-#转换vendor
-if [ $xz = '6' ];then
-if [ ! -f ~/python/sh/转换product.sh ];then
-echo "\033[31m未检测到依赖脚本！\033[0m"
-rm -rf ~/python
-exit
-fi
-sh ~/python/sh/转换product.sh   
-fi
 #杂项
-if [ $xz = '7' ];then
+if [ $xz = '6' ];then
 if [ ! -f ~/python/sh/杂项.sh ];then
 echo "\033[31m未检测到依赖脚本！\033[0m"
 rm -rf ~/python
@@ -194,7 +185,7 @@ fi
 sh ~/python/sh/杂项.sh
 fi
 #清理工作目录
-if [ $xz = '8' ];then
+if [ $xz = '7' ];then
    read -p "清理工作目录,里面的文件将消失,是否继续？(y/n): " grm
    if [ -z $grm ];then
    echo "\033[32m不删除\033[0m"
@@ -222,16 +213,14 @@ if [ $xz = '8' ];then
    fi
 fi
 #检测版本更新
-  if [ $xz = '9' ];then
+  if [ $xz = '8' ];then
   echo "\033[32m正在获取最新版本……\033[0m"
   git clone --depth=1 https://gitee.com/yi985432/python.git update -b update > /dev/null 2>&1
-  xbanben=$(sed -n 1p ~/update/update.txt)
-  banben=$(sed -n 2p ~/update/update.txt)
-  echo "\033[33m当前版本:$xdangqian\033[0m"
-  echo "\033[34m最新版本:$xbanben\033[0m"
+  banben=$(cat ~/update/update.txt)
+  echo "\033[33m当前版本:$dangqian\033[0m"
+  echo "\033[34m最新版本:$banben\033[0m"
   rm -rf ~/update
-  if [ "$dangqian">="$banben" ];then
-  rm -rf ~/=5
+  if [ "$dangqian" = "$banben" ];then
   echo "\033[32m当前为最新版本。\033[0m"
    read -p "按任意键返回" make
    cd $af
@@ -239,7 +228,6 @@ fi
    sh $0  
    exit  
   else
-  rm -rf ~/=5
   read -p "最新版本$banben是否更新？(y/n): " gengxin
   if [ -z $gengxin ];then
   echo "\033[32m懒得更新了。\033[0m"
@@ -301,21 +289,6 @@ fi
    exit
    fi
   fi
-fi
-#关于
-if [ $xz = '00' ];then
-   echo "维护人员列表
-名称:Rm -rf
-QQ:3586563103
-职位:工具开发者，维护人员
----------------------
-名称:米欧科技
-QQ:1661232459
-职位:维护人员"
-   read -p "按任意键返回" make
-   cd $af
-   clear
-   sh $0
 fi
 #退出
 if [ $xz = '88' ];then
