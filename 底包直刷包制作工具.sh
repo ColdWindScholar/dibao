@@ -230,7 +230,7 @@ fi
   echo "\033[33m当前版本:$xdangqian\033[0m"
   echo "\033[34m最新版本:$xbanben\033[0m"
   rm -rf ~/update
-  if [ "$dangqian">="$banben" ];then
+  if [ "$dangqian">="$banben" ]&&[ "$dangqian">"$banben" ];then
   rm -rf ~/=5
   echo "\033[32m当前为最新版本。\033[0m"
    read -p "按任意键返回" make
