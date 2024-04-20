@@ -6,20 +6,15 @@
 #          DATE: 2018-05-25 10:49:35 CEST
 #====================================================
 
-import sys, os, errno
+import errno
+import os
+import sys
+
 
 def main(TRANSFER_LIST_FILE, NEW_DATA_FILE, OUTPUT_IMAGE_FILE):
     __version__ = '1.1'
 
-    if sys.hexversion < 0x02070000:
-        print >> sys.stderr, "Python 2.7 or newer is required."
-        try:
-            input = raw_input
-        except NameError: pass
-        input('Press ENTER to exit...')
-        sys.exit(1)
-    else:
-        print('sdat2img binary - version: %s\n' % __version__)
+    print('sdat2img binary - version: %s\n' % __version__)
 
     def rangeset(src):
         src_set = src.split(',')
@@ -128,9 +123,6 @@ if __name__ == '__main__':
         print('    <system_new_file>: system new dat file')
         print('    [system_img]: output system image\n\n')
         print('Visit xda thread for more information.\n')
-        try:
-            input = raw_input
-        except NameError: pass
         input('Press ENTER to exit...')
         sys.exit()
 
