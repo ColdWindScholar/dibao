@@ -10,11 +10,11 @@
   os=$(uname -o)
   root=$(id -u)
   af=$(pwd)
-  bf=$(dirname $0) 
-  if ( echo ${bf} |grep -q / );then
+  bf=$(dirname "$0")
+  if ( echo "${bf}" |grep -q / );then
   .
   else 
-  cd $af/$bf
+  cd "$af"/$bf || exit
   cf=$(pwd)
   bf=$cf
   fi
@@ -224,13 +224,13 @@ fi
 #检测版本更新
   if [ $xz = '9' ];then
   echo "\033[32m正在获取最新版本……\033[0m"
-  git clone --depth=1 https://gitee.com/yi985432/python.git update -b update > /dev/null 2>&1
+  git clone --depth=1 https://gitee.com/yi985432/python.git update -b update
   xbanben=$(sed -n 1p ~/update/update.txt)
   banben=$(sed -n 2p ~/update/update.txt)
   echo "\033[33m当前版本:$xdangqian\033[0m"
   echo "\033[34m最新版本:$xbanben\033[0m"
   rm -rf ~/update
-  if [ "$dangqian">="$banben" ]&&[ "$dangqian">"$banben" ];then
+  if [ "$dangqian" >= "$banben" ]&&[ "$dangqian" > "$banben" ];then
   rm -rf ~/=5
   echo "\033[32m当前为最新版本。\033[0m"
    read -p "按任意键返回" make
